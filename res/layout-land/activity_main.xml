@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+    
+<LinearLayout
+	android:background="@color/background"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    <LinearLayout
+    	android:orientation="vertical"
+    	android:layout_height="wrap_content"
+    	android:layout_width="fill_parent"
+    	android:layout_gravity="center"
+    	android:paddingLeft="20dip"
+    	android:paddingRight="20dip" >
+		<TableLayout
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:layout_gravity="center"
+			android:stretchColumns="*">
+
+			<TableRow
+			    android:id="@+id/tableRow1"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content" >
+
+				<TextView
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginBottom="20dip"
+				    android:text="@string/main_title"
+				    android:textColor="@color/white"
+				    android:textSize="22.0sp"
+				     android:gravity="center_horizontal" />
+
+			</TableRow>
+
+			<TableRow>
+
+				<Button
+				    android:id="@+id/accelerometer_button_id"
+				    android:layout_width="fill_parent"
+				    android:layout_height="wrap_content"
+				    android:layout_centerHorizontal="true"
+				    android:layout_centerVertical="true"
+				    android:onClick="Intent_Accelerometer"
+				    android:text="@string/accelerometer_button_name"
+				    android:textColor="@color/white" />
+
+				     />
+			</TableRow>
+
+			<TableRow>
+
+				<Button
+				    android:id="@+id/orientation_button_id"
+				    android:layout_width="fill_parent"
+				    android:onClick="Intent_Orientation"
+				    android:text="@string/orientation_button_name"
+				    android:textColor="@color/white" />
+
+			</TableRow>
+			<TableRow>
+
+				<Button
+				    android:id="@+id/magnetic_button_id"
+				    android:layout_width="fill_parent"
+				    android:layout_centerHorizontal="true"
+				    android:layout_centerVertical="true"
+				    android:onClick="Intent_Light"
+				    android:text="light"
+				    android:textColor="@color/white" />
+
+			</TableRow>
+			<TableRow>
+
+				<Button
+				    android:id="@+id/pressure_button_id"
+				    android:layout_width="fill_parent"
+				    android:layout_centerHorizontal="true"
+				    android:layout_centerVertical="true"
+				    android:text="GPS/Map"
+				    android:textColor="@color/white" />
+
+			</TableRow>
+			<TableRow>
+
+				<Button
+				    android:id="@+id/proximity_button_id"
+				    android:layout_width="fill_parent"
+				    android:layout_centerHorizontal="true"
+				    android:layout_centerVertical="true"
+				    android:text="Charts"
+				    android:textColor="@color/white" />
+
+			</TableRow>
+			<TableRow>
+
+				<Button
+				    android:id="@+id/temperature_button_id"
+				    android:layout_width="fill_parent"
+				    android:layout_centerHorizontal="true"
+				    android:layout_centerVertical="true"
+				    android:text="Analysis"
+				    android:textColor="@color/white" />
+
+			</TableRow>
+		</TableLayout>
+		
+		</LinearLayout>
+</LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">IRS</string>
+    <string name="freq"><i>500=5ms,1000= 1sec, etc</i></string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="main_title">IRS</string>
+    <string name="accelerometer_button_name">accelerometer</string>
+    <string name="gyroscope_button_name">gyroscope</string>
+    <string name="light_button_name">light</string>
+    <string name="magnetic_button_name">magnetic</string>
+    <string name="orientation_button_name">orientation</string>
+    <string name="title_activity_accelerometer">Accelerometer</string>
+    <string name="title_activity_orientation">Orientation</string>
+    <string name="title_activity_light">Light</string>
+
+</resources>
