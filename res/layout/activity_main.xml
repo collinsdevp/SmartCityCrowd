@@ -12,12 +12,15 @@
     	android:layout_gravity="center"
     	android:paddingLeft="20dip"
     	android:paddingRight="20dip" >
+    	
+				
 		<TableLayout
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
 			android:layout_gravity="center"
 			android:stretchColumns="*">
 
+				
 			<TableRow
 			    android:id="@+id/tableRow1"
 			    android:layout_width="match_parent"
@@ -36,6 +39,19 @@
 
 			</TableRow>
 
+							<TableRow
+				    android:id="@+id/tableRow4"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content" >
+
+					<TextView
+					    android:id="@+id/textView2"
+					    android:layout_width="wrap_content"
+					    android:layout_height="wrap_content"
+					    android:textColor="@color/white" />
+
+				</TableRow>
+				
 			<TableRow>
 
 				<Button
@@ -58,13 +74,6 @@
 			</TableRow>
 			<TableRow>
 
-				<Button
-				    android:id="@+id/magnetic_button_id"
-				    android:layout_width="fill_parent"
-				    android:onClick="Intent_Light"
-				    android:text="@string/light_button_name"
-				    android:textColor="@color/white" />
-
 			</TableRow>
 			<TableRow>
 
@@ -82,22 +91,48 @@
 				    android:id="@+id/button2"
 				    android:layout_width="wrap_content"
 				    android:layout_height="wrap_content"
-				    android:text="Charts"
+				    android:text="Chart"
 				    android:textColor="@color/white" />
 
 			</TableRow>
-				<TableRow>
 
-					<Button
-					    android:id="@+id/button3"
-					    android:layout_width="wrap_content"
-					    android:layout_height="wrap_content"
-					    android:text="Analysis"
-					    android:textColor="@color/white" />
+			<TableRow
+			    android:id="@+id/tableRow3"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content" >
+
+				<Button
+				    android:id="@+id/button4"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:onClick="Get_Mac"
+				    android:text="Use Mac Address"
+				    android:textColor="@color/white" />
+
+			</TableRow>
+
+				<TableRow>
 				
 			</TableRow>
+
+				<TableRow
+				    android:id="@+id/tableRow2"
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content" >
+
+					<TextView
+					    android:id="@+id/textView1"
+					    android:layout_width="wrap_content"
+					    android:layout_height="wrap_content"
+					    android:gravity="center_horizontal"
+					    android:text="2017 SafetySense. All Rights Reserved."
+					    android:textColor="@color/white" />
+
+				</TableRow>
+
 
 		</TableLayout>
 		
 		</LinearLayout>
+
 </LinearLayout>

@@ -1,73 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="fill_parent"
-  android:layout_height="fill_parent">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical" >
 
-  <TableLayout
-      android:layout_width="wrap_content"
-      android:layout_height="match_parent" >
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
 
-      <TableRow
-          android:id="@+id/tableRow1"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" >
+            <TableRow
+                android:id="@+id/tableRow1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
 
-          <TextView
-              android:id="@+id/direction"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textSize="64dip"
-              android:textStyle="bold" />
-      </TableRow>
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="38sp"
+                    android:text="TextView" />
 
-      <TableRow
-          android:id="@+id/tableRow2"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" >
+            </TableRow>
 
-          <TextView
-              android:id="@+id/values"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content" />
-      </TableRow>
+            <TableRow
+                android:id="@+id/tableRow2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
 
-      <TableRow
-          android:id="@+id/tableRow3"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" >
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView" />
 
-          <Button
-              android:id="@+id/button1"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="Start" />
+            </TableRow>
 
-          <Button
-              android:id="@+id/button2"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="Reset" />
+            <TableRow
+                android:id="@+id/tableRow3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
 
-      </TableRow>
+                <Button
+                    android:id="@+id/button1"
+             android:layout_height="wrap_content"
 
-      <TableRow
-          android:id="@+id/tableRow4"
-          android:layout_width="wrap_content"
-          android:layout_height="match_parent" >
+             android:layout_weight="0.5"
+              android:layout_width="0dp"
+                    android:text="Start" />
 
-          <Button
-              android:id="@+id/button4"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="Stop" />
+                <Button
+                    android:id="@+id/button2"
+             android:layout_height="wrap_content"
+             android:layout_weight="0.5"
+              android:layout_width="0dp"
+                    android:text="Reset" />
 
-          <Button
-              android:id="@+id/button3"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="Transfer" />
+            </TableRow>
 
-      </TableRow>
-  </TableLayout>
+            <TableRow
+                android:id="@+id/tableRow4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
 
-</LinearLayout>
+                <Button
+                    android:id="@+id/button3"
+             android:layout_height="wrap_content"
+             android:layout_weight="0.5"
+              android:layout_width="0dp"
+                    android:text="Stop" />
+
+                <Button
+                    android:id="@+id/button4"
+             android:layout_height="wrap_content"
+             android:layout_weight="0.5"
+              android:layout_width="0dp"
+                    android:text="Transfer" />
+
+            </TableRow>
+        </TableLayout>
+        
+    </LinearLayout>

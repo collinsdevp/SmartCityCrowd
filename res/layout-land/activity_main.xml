@@ -65,15 +65,6 @@
 			</TableRow>
 			<TableRow>
 
-				<Button
-				    android:id="@+id/magnetic_button_id"
-				    android:layout_width="fill_parent"
-				    android:layout_centerHorizontal="true"
-				    android:layout_centerVertical="true"
-				    android:onClick="Intent_Light"
-				    android:text="light"
-				    android:textColor="@color/white" />
-
 			</TableRow>
 			<TableRow>
 
@@ -100,14 +91,36 @@
 			<TableRow>
 
 				<Button
-				    android:id="@+id/temperature_button_id"
-				    android:layout_width="fill_parent"
-				    android:layout_centerHorizontal="true"
-				    android:layout_centerVertical="true"
-				    android:text="Analysis"
+				    android:id="@+id/button2"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:onClick="Get_Mac"
+				    android:text="Use Mac Address"
 				    android:textColor="@color/white" />
 
 			</TableRow>
+
+			<TableRow
+			    android:id="@+id/tableRow3"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content" >
+
+			</TableRow>
+			
+			<TableRow
+				    android:id="@+id/tableRow2"
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content" >
+
+					<TextView
+					    android:id="@+id/textView1"
+					    android:layout_width="wrap_content"
+					    android:layout_height="wrap_content"
+					    android:gravity="center_horizontal"
+					    android:text="2017 SafetySense. All Rights Reserved."
+					    android:textColor="@color/white" />
+
+				</TableRow>
 		</TableLayout>
 		
 		</LinearLayout>

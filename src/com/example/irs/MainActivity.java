@@ -2,11 +2,14 @@ package com.example.irs;
 
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 
 public class MainActivity extends Activity {
@@ -14,10 +17,15 @@ public class MainActivity extends Activity {
 	public final static String Accelerometer_pkg = "com.example.irs.Accelerometer";
 	public final static String Orientation_pkg = "com.example.irs.Orientation";
 	
+	TextView tv;
+	 String value;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        tv = (TextView)findViewById(R.id.textView2);
+   
+        
     }
 
     @Override
@@ -40,14 +48,18 @@ public class MainActivity extends Activity {
     }
     
 public void Intent_Accelerometer(View view){
+	
+
+	if (!tv.getText().equals("")){
+		Intent i = new Intent(getApplicationContext(), Accelerometer.class);
+		i.putExtra("usernameKey",getMacAddress(this));
+		startActivity(i);
+	}else{
+		Intent i = new Intent(getApplicationContext(), Accelerometer.class);
+		startActivity(i);
+	}
+
     	
-    	Intent intent = new Intent(this,Accelerometer.class);
-    	
-    	//String  data = "123".toString();
-    	
-    //	intent.putExtra(Accelerometer_pkg, data);
-    	
-    	startActivity(intent);
     }
 
 public void Intent_Orientation(View view){
@@ -61,15 +73,32 @@ public void Intent_Orientation(View view){
 	startActivity(intent);
 }
 
-public void Intent_Light(View view){
+
+public void Intent_Register(View view){
 	
-	Intent intent = new Intent(this,Light.class);
+	Intent intent = new Intent(this,Register.class);
 	
 	//String  data = "123".toString();
 	
-//	intent.putExtra(Accelerometer_pkg, data);
+//	intent.putExtra(Orientation_pkg, data);
 	
 	startActivity(intent);
 }
+
+public void Get_Mac(View view){
+	
+	tv.setText("MAC ID: "+getMacAddress(this));
+}
+
+
+public String getMacAddress(Context context) {
+    WifiManager wimanager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+    String macAddress = wimanager.getConnectionInfo().getMacAddress();
+    if (macAddress == null) {
+        macAddress = "Device don't have mac address or wi-fi is disabled";
+    }
+    return macAddress;
+}
+
 
 }

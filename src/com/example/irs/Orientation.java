@@ -35,8 +35,8 @@ public class Orientation extends Activity implements SensorEventListener {
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mField = mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
 
-        valueView = (TextView) findViewById(R.id.values);
-        directionView = (TextView) findViewById(R.id.direction);
+        valueView = (TextView) findViewById(R.id.textView2);
+        directionView = (TextView) findViewById(R.id.textView1);
         
         ActionBar ab = getActionBar(); 
 	       ab.setDisplayHomeAsUpEnabled(true);

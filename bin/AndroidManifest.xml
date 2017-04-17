@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <uses-sdk
         android:minSdkVersion="17"
@@ -38,6 +39,26 @@
         <activity
             android:name=".Light"
             android:label="@string/title_activity_light" >
+        </activity>
+        <activity
+            android:name=".EnterEmail"
+            android:label="@string/title_activity_enter_email" >
+        </activity>
+        <activity
+            android:name=".Register"
+            android:label="@string/title_activity_register" >
+        </activity>
+        <activity
+            android:name=".Login"
+            android:label="@string/title_activity_login" >
+        </activity>
+        <activity
+            android:name=".MACADDRESS"
+            android:label="@string/title_activity_macaddress" >
+        </activity>
+        <activity
+            android:name=".Chart"
+            android:label="@string/title_activity_chart" >
         </activity>
     </application>
 

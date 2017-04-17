@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">IRS</string>
-    <string name="freq"><i>500=5ms,1000= 1sec, etc</i></string>
+    <string name="app_name">SafetySense</string>
+    <string name="freq"><i>readings/sec: min 5, 10, 20, 25, 35 max </i></string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="main_title">IRS</string>
+    <string name="main_title">SafetySense</string>
     <string name="accelerometer_button_name">accelerometer</string>
     <string name="gyroscope_button_name">gyroscope</string>
     <string name="light_button_name">light</string>
@@ -14,5 +14,10 @@
     <string name="title_activity_accelerometer">Accelerometer</string>
     <string name="title_activity_orientation">Orientation</string>
     <string name="title_activity_light">Light</string>
+    <string name="title_activity_enter_email">EnterEmail</string>
+    <string name="title_activity_register">Register</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_macaddress">MACADDRESS</string>
+    <string name="title_activity_chart">Chart</string>
 
 </resources>

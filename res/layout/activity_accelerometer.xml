@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,10 +8,11 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.irs.Accelerometer" >
-
+    
   <TableLayout
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content" >
+       android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:stretchColumns="*" >
       
       <TableRow>
 
@@ -38,36 +39,38 @@
 
           <TextView
               android:id="@+id/textView2"
+              android:layout_width="0dip"
               android:layout_height="wrap_content"
-              android:text="Freqency: "
+              android:layout_margin="4dip"
               android:layout_weight="1"
+              android:text="Readings/sec:"
               android:textColor="@color/background" />
 
           <EditText
-              android:id="@+id/editText1"
-              android:layout_height="wrap_content"
-              android:layout_weight="2"
-              android:text="1000"
-              android:textColor="@color/background" >
+         android:id="@+id/editText1"
+         android:layout_width="0dip"
+         android:layout_height="wrap_content"
+         android:padding="10dip"
+         android:layout_margin="4dip"
+         android:layout_weight="1"
+         android:text="5"
+         android:textColor="@color/background" >
 
               <requestFocus />
           </EditText>
-
-        
+          
       </TableRow>
 
       <TableRow>
-
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/freq"
                 android:textColor="@color/red" />
-          
       </TableRow>
+      
       <TableRow >
-
           <Button
               android:id="@+id/button1"
               android:layout_height="wrap_content"
@@ -136,9 +139,44 @@
                android:id="@+id/textView7"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content" />
-
        </TableRow>
 
-  </TableLayout>
-		
-</LinearLayout>
+           <TableRow
+               android:id="@+id/tableRow3"
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent" >
+
+               <TextView
+                   android:id="@+id/textView8"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Number of records : 0" />
+
+           </TableRow>
+           
+           <TableRow
+                   android:id="@+id/tableRow5"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content" >
+
+               <TextView
+                   android:id="@+id/textView10"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content" />
+
+               </TableRow>
+               
+           <TableRow
+                   android:id="@+id/tableRow4"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content" >
+
+               <TextView
+                   android:id="@+id/textView9"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textColor="@color/white" />
+
+               </TableRow>
+		  </TableLayout>
+</ScrollView >

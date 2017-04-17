@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import android.app.ActionBar;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import java.util.TimeZone;
 import java.util.Timer;
@@ -20,6 +22,10 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -58,7 +64,7 @@ private SensorManager mSensorManager;
 private Sensor mAccelerometer;
 
 public static 	SQLiteDatabase db;
-public static TextView tv1,tv3,tv5,tv6,tv7;
+public static TextView tv1,tv3,tv5,tv6,tv7,tv8,tv9,tv10;
 public static Button start;
 public EditText ed1;
 public static Timer myTimer;
@@ -76,12 +82,15 @@ List<NameValuePair> nameValuePairs;
 // vars for timer
 
 private long startTime = 0L;
-
+public static long counter=0l;
 private Handler customHandler = new Handler();
 
 long timeInMilliseconds = 0L;
 long timeSwapBuff = 0L;
 long updatedTime = 0L;
+
+public static String value;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -97,20 +106,34 @@ long updatedTime = 0L;
 		tv5 = (TextView)findViewById(R.id.textView5);
 		tv6 = (TextView)findViewById(R.id.textView6);
 		tv7 = (TextView)findViewById(R.id.textView7);
+		tv8 = (TextView)findViewById(R.id.textView8);
 		ed1 = (EditText)findViewById(R.id.editText1);
 		
-		tv5.setText("0:00:001");
-		tv6.setText("");
-		tv7.setText("");
-		tv5.setVisibility(View.GONE);
+		
+		tv9  = (TextView)findViewById(R.id.textView9); 
+		tv10  = (TextView)findViewById(R.id.textView10);
+		
+		tv5.setText("0:00:000");
+		//tv6.setText("");
+		//tv7.setText("");
+		//tv5.setVisibility(View.GONE);
 	   
 		
 		 db= openOrCreateDatabase("/data/data/com.example.irs/ReadingsDB.db", Context.MODE_PRIVATE, null);
 		  db.execSQL("DROP TABLE IF EXISTS reading");
-		db.execSQL("CREATE TABLE IF NOT EXISTS reading(sec VARCHAR, x VARCHAR, y VARCHAR,z VARCHAR, lat VARCHAR, lon VARCHAR, datetime VARCHAR);");
+		db.execSQL("CREATE TABLE IF NOT EXISTS reading(counter varchar, sec VARCHAR, x VARCHAR, y VARCHAR,z VARCHAR, lat VARCHAR, lon VARCHAR, datetime VARCHAR, altitude VARCHAR);");
 		
 		mManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-			
+		
+		 Bundle extras = getIntent().getExtras();
+         if (extras != null) {
+              value = extras.getString("usernameKey");
+
+            //  tv9.setText(value); // display macid
+              value = value.replace(":", ""); // remove ":" to store in database
+         }
+       
+       // tv9.setVisibility(View.GONE);
 	}
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) { 
@@ -156,7 +179,7 @@ long updatedTime = 0L;
 	        mCurrentLocation = mManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 	        updateDisplay();
 
-	        int minTime = 5000;
+	        int minTime = 0;
 	        float minDistance = 0;
 	        mManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, minTime, minDistance, mListener);
 	        
@@ -184,33 +207,87 @@ long updatedTime = 0L;
 	    }
 	    
 	    public void Intent_Start(View view){
+	 
 	    startTime = 0L;
 	   	 timeInMilliseconds = 0L;
 	   	 timeSwapBuff = 0L;
 	   	 updatedTime = 0L;
-	   	 
-	    	startTime = SystemClock.uptimeMillis();
-			customHandler.postDelayed(updateTimerThread, 0);
-	    	
+
 	    	 MyTimerTask myTask = new MyTimerTask();
-	    	 String regexStr = "^[0-9]*$";
-	    	 if(ed1.getText().toString().trim().matches(regexStr))
+	    	 
+	    	 String regexStr1 = "^0[0-9]*$";
+	    	 
+	 	   	boolean digitsOnly = TextUtils.isDigitsOnly(ed1.getText());
+	 	   	
+	    	 if(ed1.getText().toString().trim().isEmpty() || ed1.getText().toString().trim().matches(regexStr1) || !digitsOnly)
 	    	 {
-	    		 Toast.makeText(this, "Recording Started ... ", Toast.LENGTH_SHORT).show();
-	    		 Long frequency = Long.parseLong(ed1.getText().toString());
-	    		  myTimer = new Timer();
-	 	         myTimer.schedule(myTask, 0,frequency);
+	 
+	    		 showMessage("Error", "Invalid input  ");
 	    	 }
 	    	 else{
-	    	     showMessage("Error", "Not Number");
-	    	 }
+	    			 
+	    		 if(ed1.getText().toString().equals("5")){
+	 	    		tv5.setText("0:00:001");
+		 	    	startTime = SystemClock.uptimeMillis();
+		 			customHandler.postDelayed(updateTimerThread, 0);
+		    		 Toast.makeText(this, "Recording Started ... ", Toast.LENGTH_SHORT).show();
+		    		 Long frequency = Long.parseLong("190");
+		    		 myTimer = new Timer();
+		 	         myTimer.schedule(myTask, 0,frequency);
+	    		 }else if(ed1.getText().toString().equals("10")){
+		 	    		tv5.setText("0:00:001");
+			 	    	startTime = SystemClock.uptimeMillis();
+			 			customHandler.postDelayed(updateTimerThread, 0);
+			    		 Toast.makeText(this, "Recording Started ... ", Toast.LENGTH_SHORT).show();
+			    		 Long frequency = Long.parseLong("32");
+			    		 myTimer = new Timer();
+			 	         myTimer.schedule(myTask, 0,frequency);
+	    		 }else if(ed1.getText().toString().equals("20")){
+		 	    		tv5.setText("0:00:001");
+			 	    	startTime = SystemClock.uptimeMillis();
+			 			customHandler.postDelayed(updateTimerThread, 0);
+			    		 Toast.makeText(this, "Recording Started ... ", Toast.LENGTH_SHORT).show();
+			    		 Long frequency = Long.parseLong("31");
+			    		 myTimer = new Timer();
+			 	         myTimer.schedule(myTask, 0,frequency);
+	    		 }
+	    		 else if(ed1.getText().toString().equals("25")){
+		 	    		tv5.setText("0:00:001");
+			 	    	startTime = SystemClock.uptimeMillis();
+			 			customHandler.postDelayed(updateTimerThread, 0);
+			    		 Toast.makeText(this, "Recording Started ... ", Toast.LENGTH_SHORT).show();
+			    		 Long frequency = Long.parseLong("32");
+			    		 myTimer = new Timer();
+			 	         myTimer.schedule(myTask, 0,frequency);
+	    		 }
+	    		 else if(ed1.getText().toString().equals("30")){
+		 	    		tv5.setText("0:00:001");
+			 	    	startTime = SystemClock.uptimeMillis();
+			 			customHandler.postDelayed(updateTimerThread, 0);
+			    		 Toast.makeText(this, "Recording Started ... ", Toast.LENGTH_SHORT).show();
+			    		 Long frequency = Long.parseLong("20");
+			    		 myTimer = new Timer();
+			 	         myTimer.schedule(myTask, 0,frequency);
+	    		 }else if(ed1.getText().toString().equals("35")){
+		 	    		tv5.setText("0:00:001");
+			 	    	startTime = SystemClock.uptimeMillis();
+			 			customHandler.postDelayed(updateTimerThread, 0);
+			    		 Toast.makeText(this, "Recording Started ... ", Toast.LENGTH_SHORT).show();
+			    		 Long frequency = Long.parseLong("1");
+			    		 myTimer = new Timer();
+			 	         myTimer.schedule(myTask, 0,frequency);
+	    		 }else{
+	    			 
+	    			 showMessage("Freq Error", "Out of boundary");
+	    		 }
+	    	}
 	         
 	    }
 	    
 public void Intent_Stop(View view){
-	timeSwapBuff += timeInMilliseconds;
-	customHandler.removeCallbacks(updateTimerThread);
-	//tv5.setText("0:00:001");
+			counter=0l;
+			timeSwapBuff += timeInMilliseconds;
+			customHandler.removeCallbacks(updateTimerThread);
 	    	Toast.makeText(this, "Recording Stopped ... ", Toast.LENGTH_SHORT).show();
 	    	  
 	    	Cursor c=db.rawQuery("SELECT * FROM reading", null);
@@ -221,14 +298,21 @@ public void Intent_Stop(View view){
     		}
     		StringBuffer buffer=new StringBuffer();
     		
-    		buffer.append("Time      "+"        X         " +"Y       "+" Z"+"\n");
+    		//buffer.append("Count   "+"Time     "+"   X     " +"Y     "+" Z 	 "+"Lat 	 "+"Lon  "+"\n");
+    		
+    		buffer.append("Count   "+"Time     "+"   X     " +"      Y     "+"     Z 	 "+"\n");
     		while(c.moveToNext())
     		{
     			
-    			buffer.append(" "+c.getString(0)+" | "+""+c.getString(1)+" | "+""+c.getString(2)+" | "+""+c.getString(3)+"\n");
+    			//buffer.append(c.getString(0)+"   |			"+c.getString(1)+" | "+""+c.getString(2)+" | "+""+c.getString(3)+" |	 "+""+c.getString(4)+" | "+c.getString(5)+" | 	"+c.getString(6)+"\n");
+    			
+    			buffer.append(c.getString(0)+" | "+c.getString(1)+" | "+""+c.getString(2)+" | "+""+c.getString(3)+" | "+""+c.getString(4)+"\n");
+    			counter++;
     		}
+    		tv8.setText("Number of records : "+Long.toString(counter));
     		showMessage("Accelerometer Data", buffer.toString());
     		myTimer.cancel(); //
+    		
 }
 	    
 public void showMessage(String title,String message)
@@ -242,6 +326,12 @@ public void showMessage(String title,String message)
 	
 
 public void Intent_Reset(View view){
+	counter=0l;
+	timeSwapBuff += timeInMilliseconds;
+	customHandler.removeCallbacks(updateTimerThread);
+	counter=0l;
+	tv5.setText("0:00:000");
+	tv8.setText("Number of records : "+Long.toString(counter));
 	 startTime = 0L;
    	 timeInMilliseconds = 0L;
    	 timeSwapBuff = 0L;
@@ -257,14 +347,14 @@ public void Intent_Reset(View view){
 
 public void Intent_Transfer(View view){
 	  
-	Toast.makeText(this, "Transfer Complete ...", Toast.LENGTH_SHORT).show();
+	Toast.makeText(this, "Transfering ...", Toast.LENGTH_SHORT).show();
 	
 	Cursor c=db.rawQuery("SELECT * FROM reading", null);
 	
-	insertToDatabase("1","","","","","","","");
+	insertToDatabase("1","","","","","","","",""); 
 	while(c.moveToNext())
 	{
-		insertToDatabase(null,c.getString(0),c.getString(1),c.getString(2),c.getString(3),c.getString(4),c.getString(5),c.getString(6));
+		insertToDatabase(null,c.getString(1),c.getString(2),c.getString(3),c.getString(4),c.getString(5),c.getString(6),c.getString(7),c.getString(8));
 
 	}
 }
@@ -279,6 +369,9 @@ private void updateDisplay() {
     	tv3.setText("");
     	tv6.setText(String.format("Lon: %.8f", mCurrentLocation.getLongitude()));
     	tv7.setText(String.format("Lat: %.8f", mCurrentLocation.getLatitude()));
+    	
+    	Elevation_Insert("https://maps.googleapis.com/maps/api/elevation/json?locations="+ mCurrentLocation.getLatitude()+","+mCurrentLocation.getLongitude()+"&key=AIzaSyCEhYHn0AQJC7RyfdhUpi3-ff0Qy44E464");
+         
     }
 }
 private LocationListener mListener = new LocationListener() {
@@ -308,12 +401,14 @@ private LocationListener mListener = new LocationListener() {
 };
 
 
-private void insertToDatabase(final String truncate, final String sec, final String x,final String  y, final String z,final String lat, final String lon, final String datetime){
+private void insertToDatabase(final String truncate, final String sec, final String x,final String  y, final String z,final String lat, final String lon, final String datetime, final String alt){
     class SendPostReqAsyncTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... params) {
 
             //InputStream is = null;
+        	
+          
 
             try {
                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
@@ -325,8 +420,10 @@ private void insertToDatabase(final String truncate, final String sec, final Str
                 nameValuePairs.add(new BasicNameValuePair("lon", lon));
                 nameValuePairs.add(new BasicNameValuePair("lat", lat));
                 nameValuePairs.add(new BasicNameValuePair("datetime", datetime));
+                nameValuePairs.add(new BasicNameValuePair("macid", value));
+                nameValuePairs.add(new BasicNameValuePair("altitude", alt));
                 HttpClient httpClient = new DefaultHttpClient();
-               HttpPost httpPost = new HttpPost("https://irscloud.000webhostapp.com/acc_android.php");
+               HttpPost httpPost = new HttpPost("https://irscloud.000webhostapp.com/something.php");
                 httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
                 HttpResponse response = httpClient.execute(httpPost);
@@ -353,7 +450,7 @@ private void insertToDatabase(final String truncate, final String sec, final Str
         }
     }
     SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
-    sendPostReqAsyncTask.execute(sec,x,y,z,lon,lat,datetime);
+    sendPostReqAsyncTask.execute(sec,x,y,z,lon,lat,datetime,alt);
 }
 
 //method for timer
@@ -377,6 +474,61 @@ private Runnable updateTimerThread = new Runnable() {
 
 };
 
+private void Elevation_Insert(final String url){ 
+// you can make this class as another java file so it will be separated from your main activity.
+class AsyncTaskParseJson extends AsyncTask<String, Void, String> {
+
+
+    @Override
+    protected String doInBackground(String... arg0) {
+        final String TAG = "AsyncTaskParseJson.java";
+        
+        // set your json string url here
+        String yourJsonStringUrl = url;
+ 
+        // contacts JSONArray
+        JSONArray dataJsonArr = null;
+    	String ele = null;
+        try {
+
+            // instantiate our json parser
+            JSONParser jParser = new JSONParser();
+
+            // get json string from url
+            JSONObject json = jParser.getJSONFromUrl(yourJsonStringUrl);
+
+            // get the array of users
+            dataJsonArr = json.getJSONArray("results");
+
+
+                JSONObject c = dataJsonArr.getJSONObject(0);
+
+                // Storing each json item in variable
+                 ele = c.getString("elevation");
+
+                // show the values in our logcat
+                Log.e(TAG, "Altitude: " + ele);
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return ele;
+        
+    }
+
+    @Override
+    protected void onPostExecute(String strFromDoInBg) {
+    	tv10.setText("Elevation : "+strFromDoInBg+" meters");
+    	tv9.setText(strFromDoInBg);
+    	  super.onPostExecute(strFromDoInBg);
+    }
+}
+AsyncTaskParseJson sendPostReqAsyncTask = new AsyncTaskParseJson();
+sendPostReqAsyncTask.execute(url);
+}
+
 }
 
 
@@ -394,7 +546,7 @@ class MyTimerTask extends TimerTask {
 	
 	  public void run() {
 		  
-		  Accelerometer.db.execSQL("INSERT INTO reading(sec,x,y,z,lat,lon,datetime) VALUES('"+Accelerometer.tv5.getText()+"','"+String.format(" %1$1.2f",Accelerometer.sens[0])+"','"+String.format(" %1$1.2f",Accelerometer.sens[1])+"','"+String.format(" %1$1.2f",Accelerometer.sens[2])+"','"+String.format(" %1$1.8f",Accelerometer.loc[1])+"','"+String.format(" %1$1.8f",Accelerometer.loc[0])+"','"+getDateTime()+"');");
+		  Accelerometer.db.execSQL("INSERT INTO reading(counter,sec,x,y,z,lat,lon,datetime,altitude) VALUES('"+ ++Accelerometer.counter+"','"+Accelerometer.tv5.getText()+"','"+String.format(" %1$1.2f",Accelerometer.sens[0])+"','"+String.format(" %1$1.2f",Accelerometer.sens[1])+"','"+String.format(" %1$1.2f",Accelerometer.sens[2])+"','"+String.format(" %1$1.8f",Accelerometer.loc[1])+"','"+String.format(" %1$1.8f",Accelerometer.loc[0])+"','"+getDateTime()+"','"+Accelerometer.tv9.getText()+"');");
 			    
 	  }
 }
