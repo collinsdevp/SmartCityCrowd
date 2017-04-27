@@ -421,7 +421,7 @@ private void insertToDatabase(final String truncate, final String sec, final Str
                 nameValuePairs.add(new BasicNameValuePair("macid", value));
                 nameValuePairs.add(new BasicNameValuePair("altitude", alt));
                 HttpClient httpClient = new DefaultHttpClient();
-               HttpPost httpPost = new HttpPost("https://irscloud.000webhostapp.com/something.php");
+               HttpPost httpPost = new HttpPost("https://irscloud.000webhostapp.com/acc_android.php");
                 httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
                 HttpResponse response = httpClient.execute(httpPost);
