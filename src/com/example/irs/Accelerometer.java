@@ -59,9 +59,10 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class Accelerometer extends Activity  implements SensorEventListener {
 
-    
+// sensor variables    
 private SensorManager mSensorManager;
 private Sensor mAccelerometer;
+
 
 public static 	SQLiteDatabase db;
 public static TextView tv1,tv3,tv5,tv6,tv7,tv8,tv9,tv10;
@@ -80,7 +81,6 @@ List<NameValuePair> nameValuePairs;
 
 
 // vars for timer
-
 private long startTime = 0L;
 public static long counter=0l;
 private Handler customHandler = new Handler();
@@ -114,9 +114,6 @@ public static String value;
 		tv10  = (TextView)findViewById(R.id.textView10);
 		
 		tv5.setText("0:00:000");
-		//tv6.setText("");
-		//tv7.setText("");
-		//tv5.setVisibility(View.GONE);
 	   
 		
 		 db= openOrCreateDatabase("/data/data/com.example.irs/ReadingsDB.db", Context.MODE_PRIVATE, null);
@@ -128,12 +125,12 @@ public static String value;
 		 Bundle extras = getIntent().getExtras();
          if (extras != null) {
               value = extras.getString("usernameKey");
-
-            //  tv9.setText(value); // display macid
-              value = value.replace(":", ""); // remove ":" to store in database
+              
+              // get macid without :
+              
+              value = value.replace(":", ""); 
          }
        
-       // tv9.setVisibility(View.GONE);
 	}
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) { 
@@ -370,6 +367,7 @@ private void updateDisplay() {
     	tv6.setText(String.format("Lon: %.8f", mCurrentLocation.getLongitude()));
     	tv7.setText(String.format("Lat: %.8f", mCurrentLocation.getLatitude()));
     	
+    	// get elevation from google
     	Elevation_Insert("https://maps.googleapis.com/maps/api/elevation/json?locations="+ mCurrentLocation.getLatitude()+","+mCurrentLocation.getLongitude()+"&key=AIzaSyCEhYHn0AQJC7RyfdhUpi3-ff0Qy44E464");
          
     }
@@ -475,7 +473,6 @@ private Runnable updateTimerThread = new Runnable() {
 };
 
 private void Elevation_Insert(final String url){ 
-// you can make this class as another java file so it will be separated from your main activity.
 class AsyncTaskParseJson extends AsyncTask<String, Void, String> {
 
 
@@ -497,7 +494,7 @@ class AsyncTaskParseJson extends AsyncTask<String, Void, String> {
             // get json string from url
             JSONObject json = jParser.getJSONFromUrl(yourJsonStringUrl);
 
-            // get the array of users
+            // get the array of results
             dataJsonArr = json.getJSONArray("results");
 
 

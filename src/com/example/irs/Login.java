@@ -139,7 +139,6 @@ public class Login extends Activity {
 	         		         Toast.makeText(Login.this,"Login Successful", Toast.LENGTH_SHORT).show(); 
 	         		        }
 	         		    });
-	    				// response1 == Auth good working
 	    				Main_Intent(response1);
 	    			}
 			         
