@@ -125,7 +125,7 @@ public class Register extends Activity {
 	                nameValuePairs.add(new BasicNameValuePair("pass1", pass1));
 	                nameValuePairs.add(new BasicNameValuePair("pass2", pass2));
 	                HttpClient httpClient = new DefaultHttpClient();
-	               HttpPost httpPost = new HttpPost("https://irscloud.000webhostapp.com/.php");
+	               HttpPost httpPost = new HttpPost("https://x.com/.php");
 	                httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
 	                HttpResponse response = httpClient.execute(httpPost);
