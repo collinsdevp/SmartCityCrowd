@@ -117,7 +117,7 @@ public class Login extends Activity {
 	                nameValuePairs.add(new BasicNameValuePair("username", username));
 	                nameValuePairs.add(new BasicNameValuePair("pass1", pass1));
 	                HttpClient httpClient = new DefaultHttpClient();
-	               HttpPost httpPost = new HttpPost("https://irscloud.000webhostapp.com/login.php");
+	               HttpPost httpPost = new HttpPost("https://x.com/.php");
 	                httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
 	                // response = httpClient.execute(httpPost);
