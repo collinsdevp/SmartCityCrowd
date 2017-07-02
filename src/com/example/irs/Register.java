@@ -96,7 +96,6 @@ public class Register extends Activity {
 		}
 	
 	public void Intent_Back(View view){
-		
 		Intent intent = new Intent(this,MainActivity.class);
 		startActivity(intent);
 	}
@@ -152,10 +151,7 @@ public class Register extends Activity {
 	        @Override
 	        protected void onPostExecute(String result) {
 	            super.onPostExecute(result);
-	           
-	          //  Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
-	            
-	            // showMessage("Transfer", result);
+
 	        }
 	    }
 	    SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
