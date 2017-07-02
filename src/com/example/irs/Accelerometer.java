@@ -58,8 +58,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 public class Accelerometer extends Activity  implements SensorEventListener {
-
-// sensor variables    
+   
 private SensorManager mSensorManager;
 private Sensor mAccelerometer;
 
@@ -80,7 +79,6 @@ private Location mCurrentLocation;
 List<NameValuePair> nameValuePairs;
 
 
-// vars for timer
 private long startTime = 0L;
 public static long counter=0l;
 private Handler customHandler = new Handler();
@@ -198,7 +196,6 @@ public static String value;
 	        sens = event.values;
 
 	        
-	        //Display the raw values
 	       tv1.setText(String.format("X: %1$1.2f   Y: %2$1.2f   Z: %3$1.2f", values[0],values[1],values[2]));
 	      
 	    }
@@ -294,14 +291,10 @@ public void Intent_Stop(View view){
     			return;
     		}
     		StringBuffer buffer=new StringBuffer();
-    		
-    		//buffer.append("Count   "+"Time     "+"   X     " +"Y     "+" Z 	 "+"Lat 	 "+"Lon  "+"\n");
-    		
+	
     		buffer.append("Count   "+"Time     "+"   X     " +"      Y     "+"     Z 	 "+"\n");
     		while(c.moveToNext())
     		{
-    			
-    			//buffer.append(c.getString(0)+"   |			"+c.getString(1)+" | "+""+c.getString(2)+" | "+""+c.getString(3)+" |	 "+""+c.getString(4)+" | "+c.getString(5)+" | 	"+c.getString(6)+"\n");
     			
     			buffer.append(c.getString(0)+" | "+c.getString(1)+" | "+""+c.getString(2)+" | "+""+c.getString(3)+" | "+""+c.getString(4)+"\n");
     			counter++;
@@ -441,11 +434,8 @@ private void insertToDatabase(final String truncate, final String sec, final Str
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-           
-          //  Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
-            
-            // showMessage("Transfer", result);
-        }
+        
+	}
     }
     SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
     sendPostReqAsyncTask.execute(sec,x,y,z,lon,lat,datetime,alt);
