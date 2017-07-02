@@ -4,43 +4,43 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content">
 
             <TableRow
                 android:id="@+id/tableRow1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/textView1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="38sp"
-                    android:text="TextView" />
+                    android:text="TextView"/>
 
             </TableRow>
 
             <TableRow
                 android:id="@+id/tableRow2"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:text="TextView"/>
 
             </TableRow>
 
             <TableRow
                 android:id="@+id/tableRow3"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content">
 
                 <Button
                     android:id="@+id/button1"
@@ -48,35 +48,35 @@
 
              android:layout_weight="0.5"
               android:layout_width="0dp"
-                    android:text="Start" />
+                    android:text="Start"/>
 
                 <Button
                     android:id="@+id/button2"
              android:layout_height="wrap_content"
              android:layout_weight="0.5"
               android:layout_width="0dp"
-                    android:text="Reset" />
+                    android:text="Reset"/>
 
             </TableRow>
 
             <TableRow
                 android:id="@+id/tableRow4"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content">
 
                 <Button
                     android:id="@+id/button3"
              android:layout_height="wrap_content"
              android:layout_weight="0.5"
               android:layout_width="0dp"
-                    android:text="Stop" />
+                    android:text="Stop"/>
 
                 <Button
                     android:id="@+id/button4"
              android:layout_height="wrap_content"
              android:layout_weight="0.5"
               android:layout_width="0dp"
-                    android:text="Transfer" />
+                    android:text="Transfer"/>
 
             </TableRow>
 
@@ -84,7 +84,7 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2017 SmartCityCrowd. All Rights Reserved." />
+                android:text="2017 SmartCityCrowd. All Rights Reserved."/>
 
         </TableLayout>
         
