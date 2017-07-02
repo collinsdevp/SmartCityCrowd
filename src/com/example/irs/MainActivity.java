@@ -66,10 +66,6 @@ public void Intent_Orientation(View view){
 	
 	Intent intent = new Intent(this,Orientation.class);
 	
-	//String  data = "123".toString();
-	
-//	intent.putExtra(Orientation_pkg, data);
-	
 	startActivity(intent);
 }
 
@@ -77,10 +73,6 @@ public void Intent_Orientation(View view){
 public void Intent_Register(View view){
 	
 	Intent intent = new Intent(this,Register.class);
-	
-	//String  data = "123".toString();
-	
-//	intent.putExtra(Orientation_pkg, data);
 	
 	startActivity(intent);
 }
