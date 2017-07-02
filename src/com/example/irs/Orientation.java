@@ -108,6 +108,7 @@ public class Orientation extends Activity implements SensorEventListener {
     }
 
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
+	    
     }
 
     public void onSensorChanged(SensorEvent event) {
