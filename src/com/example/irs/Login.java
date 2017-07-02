@@ -82,13 +82,11 @@ public class Login extends Activity {
 	public void Intent_Login(View view){
 		
 		QueryToDatabase(ed1.getText().toString(),ed2.getText().toString());
-		// check for input validation if(){}
 
 		
 	}
 	
 	private void Main_Intent(String username){
-		
 		
 		Intent i = new Intent(getApplicationContext(), MainActivity.class);
 		i.putExtra("usernameKey",username);
@@ -120,9 +118,9 @@ public class Login extends Activity {
 	               HttpPost httpPost = new HttpPost("https://x.com/.php");
 	                httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
-	                // response = httpClient.execute(httpPost);
-
-	                ResponseHandler<String> responseHandler = new BasicResponseHandler(); // getting the response for php online
+	                ResponseHandler<String> responseHandler = new BasicResponseHandler(); 
+			    
+			    // getting the response for php online
 	                response1 = httpClient.execute(httpPost, responseHandler);
 	     			
 	     				
@@ -155,10 +153,7 @@ public class Login extends Activity {
 	        @Override
 	        protected void onPostExecute(String result) {
 	            super.onPostExecute(result);
-	           
-	          //  Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
-	            
-	            // showMessage("Transfer", result);
+
 	        }
 	    }
 	    SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
