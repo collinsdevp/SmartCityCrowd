@@ -15,7 +15,6 @@ import android.hardware.SensorManager;
 
 public class Orientation extends Activity implements SensorEventListener {
 
-    //Allocate data arrays once and reuse
     float[] temp = new float[9];
     float[] rotation = new float[9];
     float[] values = new float[3];
