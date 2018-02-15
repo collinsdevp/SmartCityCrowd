@@ -33,24 +33,25 @@ public final class R {
         public static final int irs_logo=0x7f020001;
     }
     public static final class id {
-        public static final int accelerometer_button_id=0x7f0a0017;
-        public static final int action_settings=0x7f0a001c;
+        public static final int accelerometer_button_id=0x7f0a0018;
+        public static final int action_settings=0x7f0a001d;
         public static final int button1=0x7f0a0005;
         public static final int button2=0x7f0a0007;
         public static final int button3=0x7f0a0006;
         public static final int button4=0x7f0a0008;
         public static final int editText1=0x7f0a0003;
-        public static final int editText2=0x7f0a0016;
-        public static final int editText3=0x7f0a001b;
-        public static final int orientation_button_id=0x7f0a0018;
-        public static final int pressure_button_id=0x7f0a0019;
-        public static final int proximity_button_id=0x7f0a001a;
+        public static final int editText2=0x7f0a0017;
+        public static final int editText3=0x7f0a001c;
+        public static final int orientation_button_id=0x7f0a0019;
+        public static final int pressure_button_id=0x7f0a001a;
+        public static final int proximity_button_id=0x7f0a001b;
         public static final int tableRow1=0x7f0a000a;
         public static final int tableRow2=0x7f0a000c;
         public static final int tableRow3=0x7f0a000e;
         public static final int tableRow4=0x7f0a0012;
         public static final int tableRow5=0x7f0a0010;
         public static final int tableRow6=0x7f0a0014;
+        public static final int text=0x7f0a0016;
         public static final int textView1=0x7f0a0001;
         public static final int textView10=0x7f0a0011;
         public static final int textView11=0x7f0a0015;
@@ -75,18 +76,20 @@ public final class R {
     public static final class layout {
         public static final int activity_accelerometer=0x7f030000;
         public static final int activity_chart=0x7f030001;
-        public static final int activity_login=0x7f030002;
-        public static final int activity_main=0x7f030003;
-        public static final int activity_orientation=0x7f030004;
-        public static final int activity_register=0x7f030005;
+        public static final int activity_light=0x7f030002;
+        public static final int activity_login=0x7f030003;
+        public static final int activity_main=0x7f030004;
+        public static final int activity_orientation=0x7f030005;
+        public static final int activity_register=0x7f030006;
     }
     public static final class menu {
         public static final int accelerometer=0x7f090000;
         public static final int chart=0x7f090001;
-        public static final int login=0x7f090002;
-        public static final int main=0x7f090003;
-        public static final int orientation=0x7f090004;
-        public static final int register=0x7f090005;
+        public static final int light=0x7f090002;
+        public static final int login=0x7f090003;
+        public static final int main=0x7f090004;
+        public static final int orientation=0x7f090005;
+        public static final int register=0x7f090006;
     }
     public static final class string {
         public static final int accelerometer_button_name=0x7f070005;

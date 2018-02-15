@@ -116,8 +116,8 @@
 					    android:layout_width="wrap_content"
 					    android:layout_height="wrap_content"
 					    android:gravity="center_horizontal"
-					    android:text="2017 SmartCityCrowd. All Rights Reserved."
-					    android:textColor="@color/white"/>
+					    android:text="SmartCityCrowd"
+					    android:textColor="@color/white" />
 
 				</TableRow>
 		</TableLayout>
